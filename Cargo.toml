@@ -1,0 +1,27 @@
+[package]
+name = "f401nucleo_robo_rust"
+version = "0.1.0"
+authors = ["Boris Vinogradov <no111u3@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+# These are fundamental cortex-m support crates
+cortex-m = "0.6.2"
+cortex-m-rt = "0.6.12"
+panic-halt = "0.2.0"
+
+[dependencies.stm32f4xx-hal]
+version = "0.8"
+features = ["rt", "stm32f401"]
+
+[dependencies.stm32f4]
+version = "0.10.0"
+# Edit this feature to change which STM32F4 device you are using
+features = ["stm32f401", "rt"]
+
+[profile.release]
+# Many of these settings are highly recommended or required for embedded work
+codegen-units = 1
+incremental = false
+debug = true
+lto = true
