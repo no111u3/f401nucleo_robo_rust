@@ -9,15 +9,16 @@ edition = "2018"
 cortex-m = "0.6.2"
 cortex-m-rt = "0.6.12"
 panic-halt = "0.2.0"
+embedded-hal = "0.2"
 
 [dependencies.stm32f4xx-hal]
 version = "0.8"
 features = ["rt", "stm32f401"]
 
-[dependencies.stm32f4]
-version = "0.10.0"
+#[dependencies.stm32f4]
+#version = "0.10.0"
 # Edit this feature to change which STM32F4 device you are using
-features = ["stm32f401", "rt"]
+#features = ["stm32f401", "rt"]
 
 [profile.release]
 # Many of these settings are highly recommended or required for embedded work
