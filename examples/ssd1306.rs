@@ -15,11 +15,13 @@ use stm32f4xx_hal::{
 };
 
 use embedded_graphics::{
+    fonts::{Font6x8, Text},
     image::{Image, ImageRaw},
     pixelcolor::BinaryColor,
     prelude::*,
     primitives::{Circle, Rectangle, Triangle},
     style::PrimitiveStyleBuilder,
+    style::TextStyleBuilder,
 };
 
 use ssd1306::{prelude::*, Builder as SSD1306Builder};
@@ -117,6 +119,27 @@ fn main() -> ! {
         let im = Image::new(&raw, Point::new(32, 0));
 
         im.draw(&mut disp).unwrap();
+
+        disp.flush().unwrap();
+
+        delay.delay_ms(500_u16);
+        led.toggle().ok();
+
+        disp.clear();
+
+        let text_style = TextStyleBuilder::new(Font6x8)
+            .text_color(BinaryColor::On)
+            .build();
+
+        Text::new("Hello world!", Point::zero())
+            .into_styled(text_style)
+            .draw(&mut disp)
+            .unwrap();
+
+        Text::new("Hello Rust!", Point::new(0, 16))
+            .into_styled(text_style)
+            .draw(&mut disp)
+            .unwrap();
 
         disp.flush().unwrap();
     }
