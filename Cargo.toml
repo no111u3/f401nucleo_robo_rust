@@ -10,6 +10,8 @@ cortex-m = "0.6.2"
 cortex-m-rt = "0.6.12"
 panic-halt = "0.2.0"
 embedded-hal = "0.2"
+ssd1306 = "0.4"
+embedded-graphics = "0.6"
 
 [dependencies.stm32f4xx-hal]
 version = "0.8"
