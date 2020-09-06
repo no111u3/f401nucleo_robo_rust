@@ -12,6 +12,8 @@ panic-halt = "0.2.0"
 embedded-hal = "0.2"
 ssd1306 = "0.4"
 embedded-graphics = "0.6"
+ws2812-spi = "0.3.0"
+smart-leds = "0.3.0"
 
 [dependencies.stm32f4xx-hal]
 version = "0.8"
@@ -28,3 +30,6 @@ codegen-units = 1
 incremental = false
 debug = true
 lto = true
+
+[patch.crates-io]
+smart-leds-trait = { path = "/Users/nis/Develop/smart-leds-trait" }
