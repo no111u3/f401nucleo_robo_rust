@@ -34,4 +34,4 @@ debug = true
 lto = true
 
 [patch.crates-io]
-smart-leds-trait = { path = "/Users/nis/Develop/smart-leds-trait" }
+stm32f4xx-hal = { path = "/Users/nis/Develop/stm32f4xx-hal" }

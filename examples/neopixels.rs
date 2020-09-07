@@ -40,7 +40,8 @@ fn main() -> ! {
 
     let mut delay = Delay::new(cp.SYST, clocks);
 
-    let spi = Spi::spi1(p.SPI1, (sck, miso, mosi), MODE, 3_000_000.hz(), clocks);
+    let mut spi = Spi::spi1(p.SPI1, (sck, miso, mosi), MODE, 3_000_000.hz(), clocks);
+    spi.set_send_only();
 
     let data = [
         Color {
