@@ -16,6 +16,7 @@ ws2812-spi = "0.3.0"
 smart-leds = "0.3.0"
 rtt-target = { version = "0.2.0", features = ["cortex-m"] }
 panic-rtt-target = { version = "0.1.0", features = ["cortex-m"] }
+lis3mdl = "0.1.0"
 
 [dependencies.stm32f4xx-hal]
 version = "0.8"
@@ -35,3 +36,4 @@ lto = true
 
 [patch.crates-io]
 stm32f4xx-hal = { path = "/Users/nis/Develop/stm32f4xx-hal" }
+lis3mdl = { path = "/Users/nis/Develop/lis3mdl" }

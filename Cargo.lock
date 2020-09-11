@@ -36,6 +36,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "46afbd2983a5d5a7bd740ccb198caf5b82f45c40c09c0eed36052d91cb92e719"
 
 [[package]]
+name = "bitflags"
+version = "1.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693"
+
+[[package]]
 name = "byte-slice-cast"
 version = "0.3.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -158,6 +164,7 @@ dependencies = [
  "cortex-m-rt",
  "embedded-graphics",
  "embedded-hal",
+ "lis3mdl",
  "panic-halt",
  "panic-rtt-target",
  "rtt-target",
@@ -193,6 +200,14 @@ checksum = "501466ecc8a30d1d3b7fc9229b122b2ce8ed6e9d9223f1138d4babb253e51817"
 dependencies = [
  "typenum",
  "version_check",
+]
+
+[[package]]
+name = "lis3mdl"
+version = "0.1.0"
+dependencies = [
+ "bitflags",
+ "embedded-hal",
 ]
 
 [[package]]
