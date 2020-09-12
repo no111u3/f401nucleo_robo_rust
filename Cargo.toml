@@ -17,6 +17,7 @@ smart-leds = "0.3.0"
 rtt-target = { version = "0.2.0", features = ["cortex-m"] }
 panic-rtt-target = { version = "0.1.0", features = ["cortex-m"] }
 lis3mdl = "0.1.0"
+cortex-m-rtic = "0.5"
 
 [dependencies.stm32f4xx-hal]
 version = "0.8"
