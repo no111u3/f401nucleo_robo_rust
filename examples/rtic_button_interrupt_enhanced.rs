@@ -48,7 +48,7 @@ const APP: () = {
 
         button.make_interrupt_source(&mut p.SYSCFG);
         button.enable_interrupt(&mut p.EXTI);
-        button.trigger_on_edge(&mut p.EXTI, Edge::RISING);
+        button.trigger_on_edge(&mut p.EXTI, Edge::FALLING);
 
         // Initialize (enable) the monotonic timer (CYCCNT)
         ctx.core.DCB.enable_trace();
@@ -87,21 +87,21 @@ const APP: () = {
 
         match event {
             Event::OnPress => {
-                if *counter < 25 {
-                    if button.is_low().unwrap() {
-                        *counter += 1;
-                    } else {
-                        *event = Event::OnRelease;
-                    }
-                } else {
+                if button.is_low().unwrap() {
                     *event = Event::Pressed;
+                } else {
+                    *event = Event::OnRelease;
                 }
             }
             Event::OnRelease => {
-                *event = Event::Released;
-                *counter = 0;
-                // Clear the interrupt
-                button.clear_interrupt_pending_bit();
+                if *counter < 50 {
+                    *counter += 1;
+                } else {
+                    *counter = 0;
+                    *event = Event::Released;
+                    // Clear the interrupt
+                    button.clear_interrupt_pending_bit();
+                }
             }
             Event::Released => {}
             Event::Pressed => {
