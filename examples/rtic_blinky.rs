@@ -46,7 +46,9 @@ const APP: () = {
 
     #[idle]
     fn idle(_ctx: idle::Context) -> ! {
-        loop {}
+        loop {
+            cortex_m::asm::nop();
+        }
     }
 
     #[task(schedule = [blinky], resources = [led])]

@@ -43,7 +43,9 @@ const APP: () = {
 
     #[idle]
     fn idle(_ctx: idle::Context) -> ! {
-        loop {}
+        loop {
+            cortex_m::asm::nop();
+        }
     }
 
     #[task(binds = EXTI15_10, resources = [led, button])]

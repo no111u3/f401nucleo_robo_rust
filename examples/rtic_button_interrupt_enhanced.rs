@@ -71,7 +71,9 @@ const APP: () = {
 
     #[idle]
     fn idle(_ctx: idle::Context) -> ! {
-        loop {}
+        loop {
+            cortex_m::asm::nop();
+        }
     }
 
     #[task(schedule = [button_handler], resources = [led, button, event, counter])]
