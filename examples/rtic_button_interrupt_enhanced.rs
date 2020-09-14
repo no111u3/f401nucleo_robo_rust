@@ -87,19 +87,14 @@ const APP: () = {
 
         match event {
             Event::OnPress => {
-                if *counter < 21 {
+                if *counter < 25 {
                     if button.is_low().unwrap() {
                         *counter += 1;
-                        ctx.schedule
-                            .button_handler(ctx.scheduled + 16_000.cycles())
-                            .unwrap();
                     } else {
                         *event = Event::OnRelease;
-                        ctx.schedule.button_handler(ctx.scheduled).unwrap();
                     }
                 } else {
                     *event = Event::Pressed;
-                    ctx.schedule.button_handler(ctx.scheduled).unwrap();
                 }
             }
             Event::OnRelease => {
@@ -108,26 +103,20 @@ const APP: () = {
                 // Clear the interrupt
                 button.clear_interrupt_pending_bit();
             }
-            Event::Released => {
-                if button.is_low().unwrap() {
-                    *event = Event::OnPress;
-                    ctx.schedule
-                        .button_handler(ctx.scheduled + 16_000.cycles())
-                        .unwrap();
-                }
-            }
+            Event::Released => {}
             Event::Pressed => {
                 // Toggle the led
                 led.toggle().ok();
-                if button.is_low().unwrap() {
-                    ctx.schedule
-                        .button_handler(ctx.scheduled + 16_000.cycles())
-                        .unwrap();
-                } else {
+                if button.is_high().unwrap() {
                     *event = Event::OnRelease;
-                    ctx.schedule.button_handler(ctx.scheduled).unwrap();
                 }
             }
+        }
+
+        if *event != Event::Released {
+            ctx.schedule
+                .button_handler(ctx.scheduled + 16_000.cycles())
+                .unwrap();
         }
     }
 
