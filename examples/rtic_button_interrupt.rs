@@ -36,7 +36,7 @@ const APP: () = {
 
         button.make_interrupt_source(&mut p.SYSCFG);
         button.enable_interrupt(&mut p.EXTI);
-        button.trigger_on_edge(&mut p.EXTI, Edge::RISING);
+        button.trigger_on_edge(&mut p.EXTI, Edge::FALLING);
 
         init::LateResources { led, button }
     }

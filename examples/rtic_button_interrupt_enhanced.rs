@@ -94,7 +94,7 @@ const APP: () = {
                 }
             }
             Event::OnRelease => {
-                if *counter < 50 {
+                if *counter < 3 {
                     *counter += 1;
                 } else {
                     *counter = 0;
